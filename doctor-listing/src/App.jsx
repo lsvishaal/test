@@ -191,6 +191,7 @@ function App() {
       });
     }
     setFilteredDoctors(filtered);
+    setVisibleCount(PAGE_SIZE); // Reset visibleCount immediately after filtering
   }, [doctors, consultationType, selectedSpecialties, search, sortBy]);
 
   useEffect(() => {
