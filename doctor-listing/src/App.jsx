@@ -32,6 +32,8 @@ const SPECIALTIES = [
   "Homeopath",
 ];
 
+const PAGE_SIZE = 7;
+
 function App() {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -44,6 +46,27 @@ function App() {
   const [sortBy, setSortBy] = useState("");
   const [error, setError] = useState("");
   const inputRef = useRef();
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [lazyLoading, setLazyLoading] = useState(false);
+  const observer = useRef();
+
+  const lastCardRef = useCallback(
+    (node) => {
+      if (loading || lazyLoading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new window.IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && visibleCount < filteredDoctors.length) {
+          setLazyLoading(true);
+          setTimeout(() => {
+            setVisibleCount((prev) => prev + PAGE_SIZE);
+            setLazyLoading(false);
+          }, 500);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, lazyLoading, visibleCount, filteredDoctors.length]
+  );
 
   useEffect(() => {
     fetch("https://srijandubey.github.io/campus-api-mock/SRM-C1-25.json")
@@ -182,6 +205,10 @@ function App() {
     }
   }, [inputValue, doctors]);
 
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [doctors, consultationType, selectedSpecialties, search, sortBy]);
+
   const handleSearchEnter = () => {
     setSearch(inputValue);
   };
@@ -205,6 +232,14 @@ function App() {
     setSortBy("");
     setSearch("");
     setInputValue("");
+  };
+
+  const handleLoadMore = () => {
+    setLazyLoading(true);
+    setTimeout(() => {
+      setVisibleCount((prev) => prev + PAGE_SIZE);
+      setLazyLoading(false);
+    }, 500); // Simulate network delay
   };
 
   return (
@@ -232,23 +267,17 @@ function App() {
         }
       >
         {loading ? (
-          <div className="flex justify-center py-8">
-            <span
-              className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500 mr-2"
-              aria-label="Loading"
-            ></span>
-            <span>Loading...</span>
-          </div>
+          <DoctorList loading visibleCount={PAGE_SIZE} />
         ) : error ? (
           <div className="text-center text-red-600 py-8" role="alert">
             {error}
           </div>
         ) : (
           <DoctorList
-            key={
-              consultationType + selectedSpecialties.join(",") + sortBy + search
-            }
             doctors={filteredDoctors}
+            visibleCount={visibleCount}
+            loading={lazyLoading}
+            lastCardRef={lastCardRef}
           />
         )}
       </MainLayout>
