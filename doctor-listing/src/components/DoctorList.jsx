@@ -5,6 +5,7 @@
  */
 import DoctorCard from "./DoctorCard";
 import PropTypes from "prop-types";
+import { motion } from "motion/react";
 
 const DoctorList = ({ doctors }) => (
   <div data-testid="doctor-list" className="space-y-4">
@@ -13,7 +14,17 @@ const DoctorList = ({ doctors }) => (
         No doctors found.
       </div>
     ) : (
-      doctors.map((doc, idx) => <DoctorCard key={doc.id || idx} doctor={doc} />)
+      doctors.map((doc, idx) => (
+        <motion.div
+          key={doc.id || doc.name || idx}
+          className="motion-card"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: idx * 0.03 }}
+        >
+          <DoctorCard doctor={doc} />
+        </motion.div>
+      ))
     )}
   </div>
 );

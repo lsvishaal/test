@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #222;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +47,111 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Navbar */
+nav {
+  background: #fff;
+  border-bottom: 2px solid #e53935;
+  box-shadow: 0 2px 8px 0 rgba(229,57,53,0.04);
+}
+
+/* Sidebar */
+.sidebar {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px 0 rgba(229,57,53,0.08);
+  border: 1px solid #f5c6cb;
+  padding: 2rem 1.5rem;
+  margin-left: 2.5rem;
+}
+
+/* Consistent font size for sidebar titles and options */
+.sidebar .text-lg.font-bold,
+.sidebar [data-testid^="filter-header"] {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.sidebar label,
+.sidebar input[type="checkbox"] + span,
+.sidebar input[type="radio"] + span {
+  font-size: 60% !important;
+  font-weight: 400;
+}
+
+/* Remove extra small font from previous filter tweaks */
+[data-testid^="filter-header"],
+.sidebar label,
+.sidebar input[type="checkbox"] + span,
+.sidebar input[type="radio"] + span {
+  /* font-size: 0.7em !important; */
+}
+
+/* Filter section headers */
+[data-testid^="filter-header"] {
+  color: #e53935;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Filter checkboxes and radios */
+input[type="checkbox"], input[type="radio"] {
+  accent-color: #e53935;
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+button[type="button"] {
+  background: #fff;
+  color: #e53935;
+  border: 2px solid #e53935;
+}
+button[type="button"]:hover {
+  background: #e53935;
+  color: #fff;
+}
+
+/* Doctor Card */
+[data-testid="doctor-card"] {
+  border: 1px solid #f5c6cb;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 16px 0 rgba(229,57,53,0.08);
+  transition: box-shadow 0.2s, border 0.2s;
+}
+[data-testid="doctor-card"]:hover {
+  box-shadow: 0 4px 24px 0 rgba(229,57,53,0.16);
+  border: 1.5px solid #e53935;
+}
+
+[data-testid="doctor-name"] {
+  color: #e53935;
+  font-weight: 700;
+}
+
+[data-testid="doctor-specialty"] {
+  color: #b71c1c;
+}
+
+/* Main layout tweaks */
+@media (min-width: 768px) {
+  .main-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+  .sidebar {
+    min-width: 260px;
+    max-width: 320px;
+  }
+}
+
+/* Animate doctor cards */
+.motion-card {
+  will-change: transform, opacity;
 }

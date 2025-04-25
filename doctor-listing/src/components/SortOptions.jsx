@@ -4,7 +4,7 @@ const SortOptions = ({ sortBy, onSortChange }) => (
       Sort
     </div>
     <div className="space-y-2">
-      <label className="flex items-center gap-2">
+      <label className="flex items-center gap-1">
         <input
           type="radio"
           name="sortBy"
@@ -15,7 +15,7 @@ const SortOptions = ({ sortBy, onSortChange }) => (
         />
         Price: Low-High
       </label>
-      <label className="flex items-center gap-2">
+      <label className="flex items-center gap-1">
         <input
           type="radio"
           name="sortBy"
@@ -23,8 +23,7 @@ const SortOptions = ({ sortBy, onSortChange }) => (
           checked={sortBy === "experience"}
           onChange={() => onSortChange("experience")}
           data-testid="sort-experience"
-        />
-        Experience - Most Experience first
+        />Experience - Most Experience first
       </label>
     </div>
   </div>

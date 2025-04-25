@@ -1,5 +1,5 @@
-import ConsultationModeFilter from "./ConsultationModeFilter";
-import SpecialityFilter from "./SpecialityFilter";
+import ConsultationModeFilter from './ConsultationModeFilter';
+import SpecialityFilter from './SpecialityFilter';
 
 const Filters = ({
   consultationType,

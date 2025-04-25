@@ -128,20 +128,19 @@ function App() {
     let filtered = [...doctors];
     // 1. Consultation type filter
     if (consultationType) {
-      filtered = filtered.filter(
-        (doc) =>
-          doc.mode &&
-          doc.mode.toLowerCase().includes(consultationType.toLowerCase())
-      );
+      if (consultationType === "Video Consult") {
+        filtered = filtered.filter((doc) => doc.video_consult);
+      } else if (consultationType === "In Clinic") {
+        filtered = filtered.filter((doc) => doc.in_clinic);
+      }
     }
     // 2. Specialties filter
     if (selectedSpecialties.length > 0) {
-      filtered = filtered.filter((doc) => {
-        const docSpecs = Array.isArray(doc.specialties)
-          ? doc.specialties
-          : [doc.specialization || doc.specialty];
-        return selectedSpecialties.some((spec) => docSpecs.includes(spec));
-      });
+      filtered = filtered.filter(
+        (doc) =>
+          Array.isArray(doc.specialities) &&
+          doc.specialities.some((s) => selectedSpecialties.includes(s.name))
+      );
     }
     // 3. Search filter
     if (search) {
@@ -151,11 +150,19 @@ function App() {
     }
     // 4. Sort
     if (sortBy === "fees") {
-      filtered = filtered.sort((a, b) => (a.fees || 0) - (b.fees || 0));
+      filtered = filtered.sort((a, b) => {
+        const feeA = parseInt((a.fees || "").replace(/[^\d]/g, ""), 10) || 0;
+        const feeB = parseInt((b.fees || "").replace(/[^\d]/g, ""), 10) || 0;
+        return feeA - feeB;
+      });
     } else if (sortBy === "experience") {
-      filtered = filtered.sort(
-        (a, b) => (b.experience || 0) - (a.experience || 0)
-      );
+      filtered = filtered.sort((a, b) => {
+        const expA =
+          parseInt((a.experience || "").replace(/[^\d]/g, ""), 10) || 0;
+        const expB =
+          parseInt((b.experience || "").replace(/[^\d]/g, ""), 10) || 0;
+        return expB - expA;
+      });
     }
     setFilteredDoctors(filtered);
   }, [doctors, consultationType, selectedSpecialties, search, sortBy]);
@@ -237,7 +244,12 @@ function App() {
             {error}
           </div>
         ) : (
-          <DoctorList doctors={filteredDoctors} />
+          <DoctorList
+            key={
+              consultationType + selectedSpecialties.join(",") + sortBy + search
+            }
+            doctors={filteredDoctors}
+          />
         )}
       </MainLayout>
     </div>

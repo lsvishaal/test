@@ -11,6 +11,11 @@ A modern, minimal, and fully functional doctor listing page built with React and
 - Browser navigation retains filters
 - All required `data-testid` attributes for test automation
 - Accessibility best practices
+- **Red/white modern theme with gradients and motion effects**
+- **Animated doctor cards and UI using motion**
+- **Sticky/fixed sidebar for sort and filters**
+- **Responsive, scrollable, and visually separated filter panel**
+- **Profile photo, clinic, and all available doctor info shown**
 
 ---
 
@@ -18,6 +23,10 @@ A modern, minimal, and fully functional doctor listing page built with React and
 - 🔍 **Autocomplete search** with top 3 suggestions
 - 🧑‍⚕️ **Doctor list** with all required info and testids
 - 🗂️ **Filter panel:** consultation type, specialties, sort
+- 🎨 **Modern red/white theme** with gradients and custom font
+- 🏷️ **Animated doctor cards and UI** (motion/react)
+- 📌 **Sticky/fixed sidebar** for sort and filters
+- 🖼️ **Profile photo, clinic, and all available doctor info**
 - 🔗 **URL query params** for all filters/search/sort
 - 🔄 **Browser navigation** retains filters
 - 🧪 **Ready for automated testing** (data-testid everywhere)
@@ -47,14 +56,14 @@ A modern, minimal, and fully functional doctor listing page built with React and
 App
  ├── Navbar (search bar)
  ├── MainLayout
- │    ├── Sidebar
- │    │    ├── SortOptions
- │    │    ├── Filters
+ │    ├── Sidebar (fixed, sticky)
+ │    │    ├── SortOptions (in its own box)
+ │    │    ├── Filters (in its own box, scrollable)
  │    │    │    ├── SpecialityFilter
  │    │    │    └── ConsultationModeFilter
- │    │    └── ClearFiltersButton
+ │    │    └── ClearFiltersButton (sticky at top of filters)
  │    └── DoctorList
- │         └── DoctorCard (repeated)
+ │         └── DoctorCard (animated, modern layout)
 ```
 
 ---
@@ -67,6 +76,8 @@ App
 - URL updates with query params for all filters/search/sort
 - Use browser back/forward to see filters persist
 - Inspect elements for correct `data-testid` attributes
+- **Sidebar remains fixed and accessible while scrolling**
+- **Doctor cards animate in/out on filter/search/sort changes**
 
 ---
 
@@ -79,6 +90,8 @@ App
 - JSDoc comments for key functions/components
 - Linting and formatting with ESLint/Prettier
 - Minimal, modern, and maintainable code structure
+- **Consistent, theme-based styling and spacing**
+- **Motion effects for a modern, dynamic UI**
 
 ---
 
@@ -95,6 +108,10 @@ App
 - [x] All required data-testid attributes
 - [x] Accessibility best practices
 - [x] Loading and error handling
+- [x] **Modern red/white theme and gradients**
+- [x] **Animated doctor cards and UI (motion)**
+- [x] **Sticky/fixed sidebar and scrollable filters**
+- [x] **Profile photo, clinic, and all available doctor info**
 
 ---
 
