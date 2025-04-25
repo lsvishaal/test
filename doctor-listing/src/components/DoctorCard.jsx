@@ -8,14 +8,22 @@ import PropTypes from "prop-types";
 const DoctorCard = ({ doctor }) => (
   <div
     data-testid="doctor-card"
-    className="flex items-stretch gap-4 bg-white rounded-lg shadow p-4 relative"
+    className="flex items-stretch gap-4 rounded-lg shadow p-4 relative"
+    style={{
+      background: "var(--color-bg)",
+      border: "1px solid var(--color-accent)",
+    }}
   >
     <div className="flex flex-col items-center min-w-[72px] max-w-[72px]">
       <img
         src={doctor.photo}
         alt={doctor.name}
         className="w-16 h-16 rounded-full object-cover border mb-2"
-        style={{ minWidth: 64, minHeight: 64 }}
+        style={{
+          minWidth: 64,
+          minHeight: 64,
+          borderColor: "var(--color-accent)",
+        }}
       />
       {doctor.clinic && doctor.clinic.name && (
         <div className="text-xs text-gray-500 text-center leading-tight mt-1">
@@ -27,7 +35,8 @@ const DoctorCard = ({ doctor }) => (
       <div>
         <div
           data-testid="doctor-name"
-          className="font-bold text-lg mb-1 text-[#e53935]"
+          className="font-bold text-lg mb-1"
+          style={{ color: "var(--color-danger)" }}
         >
           {doctor.name}
         </div>
@@ -36,7 +45,8 @@ const DoctorCard = ({ doctor }) => (
         </div>
         <div
           data-testid="doctor-specialty"
-          className="text-sm text-[#b71c1c] mb-1"
+          className="text-sm mb-1"
+          style={{ color: "var(--color-secondary)" }}
         >
           {doctor.specialities && doctor.specialities.length > 0
             ? doctor.specialities.map((s) => s.name).join(", ")
@@ -65,14 +75,34 @@ const DoctorCard = ({ doctor }) => (
     <div className="flex flex-col items-end justify-between min-w-[90px]">
       <div
         data-testid="doctor-fee"
-        className="text-lg font-bold text-[#e53935] mb-2"
+        className="text-lg font-bold mb-2"
+        style={{ color: "var(--color-danger)" }}
       >
         {doctor.fees}
       </div>
       <button
-        className="px-4 py-2 border rounded text-blue-600 border-blue-600 hover:bg-blue-50 transition"
+        className="px-4 py-2 border rounded transition"
         type="button"
         aria-label={`Book appointment with ${doctor.name}`}
+        style={{
+          background: "transparent",
+          color: "var(--color-primary)",
+          border: "2px solid var(--color-primary)",
+          fontFamily: "Montserrat, Open Sans, Arial, sans-serif",
+          fontWeight: 700,
+          boxShadow: "none",
+          transition: "background 0.25s, color 0.25s",
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.background = "var(--color-primary)";
+          e.currentTarget.style.color = "#fff";
+          e.currentTarget.style.borderColor = "var(--color-primary)";
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.background = "transparent";
+          e.currentTarget.style.color = "var(--color-primary)";
+          e.currentTarget.style.borderColor = "var(--color-primary)";
+        }}
       >
         Book Appointment
       </button>

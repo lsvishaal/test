@@ -18,9 +18,19 @@ const Navbar = ({
   onSuggestionClick,
   inputRef,
 }) => (
-  <nav className="w-full bg-gradient-to-r from-[#e53935] via-[#ff1744] to-[#ff5252] py-6 flex justify-center items-center">
+  <nav
+    className="w-full py-6 flex justify-center items-center"
+    style={{ background: "var(--color-bg)" }}
+  >
     <div className="w-full max-w-xl relative flex flex-col items-center">
-      <div className="w-full flex items-center bg-white/90 rounded-xl shadow px-2 py-1">
+      <div
+        className="w-full flex items-center"
+        style={{
+          background: "rgba(255,255,255,0.95)",
+          borderRadius: "0.75rem",
+          boxShadow: "0 2px 8px 0 rgba(34,34,34,0.04)",
+        }}
+      >
         <input
           ref={inputRef}
           className="w-full bg-transparent border-none outline-none px-3 py-2 text-base placeholder:text-xs placeholder-gray-400 rounded-xl"
@@ -33,20 +43,29 @@ const Navbar = ({
           }}
           data-testid="autocomplete-input"
           autoComplete="off"
-          style={{ fontSize: "1rem" }}
+          style={{
+            fontSize: "1rem",
+            fontFamily: "Roboto, Inter, Arial, sans-serif",
+          }}
         />
         <button
-          className="ml-2 p-2 rounded hover:bg-[#f5c6cb] transition"
+          className="ml-2 rounded transition"
           aria-label="Search"
           onClick={onSearchEnter}
           tabIndex={0}
+          style={{
+            background: "var(--color-primary)",
+            padding: "0.3rem 0.5rem",
+            minWidth: "unset",
+            minHeight: "unset",
+          }}
         >
           <svg
             width="20"
             height="20"
             fill="none"
             viewBox="0 0 24 24"
-            stroke="#e53935"
+            stroke="var(--color-danger)"
             strokeWidth="2"
           >
             <circle cx="11" cy="11" r="7" />
