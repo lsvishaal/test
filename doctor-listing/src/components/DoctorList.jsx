@@ -1,11 +1,3 @@
-/**
- * DoctorList component renders a list of DoctorCard components.
- * @param {Object} props
- * @param {Array} props.doctors - Array of doctor objects
- * @param {number} props.visibleCount - Number of visible doctor cards
- * @param {boolean} props.loading - Loading state
- * @param {Object} props.lastCardRef - Ref for the last visible doctor card
- */
 import DoctorCard from "./DoctorCard";
 import SkeletonDoctorCard from "./SkeletonDoctorCard";
 import PropTypes from "prop-types";

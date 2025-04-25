@@ -11,11 +11,13 @@ A modern, minimal, and fully functional doctor listing page built with React and
 - Browser navigation retains filters
 - All required `data-testid` attributes for test automation
 - Accessibility best practices
-- **Red/white modern theme with gradients and motion effects**
+- **Premium gold/white/gray theme with modern fonts and motion effects**
 - **Animated doctor cards and UI using motion**
 - **Sticky/fixed sidebar for sort and filters**
 - **Responsive, scrollable, and visually separated filter panel**
 - **Profile photo, clinic, and all available doctor info shown**
+- **Infinite scroll for doctor cards (7 at a time, loads more as you scroll)**
+- **Skeleton loader for doctor cards while loading**
 
 ---
 
@@ -23,7 +25,7 @@ A modern, minimal, and fully functional doctor listing page built with React and
 - 🔍 **Autocomplete search** with top 3 suggestions
 - 🧑‍⚕️ **Doctor list** with all required info and testids
 - 🗂️ **Filter panel:** consultation type, specialties, sort
-- 🎨 **Modern red/white theme** with gradients and custom font
+- 🎨 **Premium gold/white/gray theme** with modern fonts
 - 🏷️ **Animated doctor cards and UI** (motion/react)
 - 📌 **Sticky/fixed sidebar** for sort and filters
 - 🖼️ **Profile photo, clinic, and all available doctor info**
@@ -31,7 +33,8 @@ A modern, minimal, and fully functional doctor listing page built with React and
 - 🔄 **Browser navigation** retains filters
 - 🧪 **Ready for automated testing** (data-testid everywhere)
 - ♿ **Accessible** (aria-labels, semantic HTML)
-- ⏳ **Loading spinner** and error message for API
+- ⏳ **Skeleton loader** for doctor cards while loading
+- 🔄 **Infinite scroll** for doctor cards (loads more as you scroll)
 
 ---
 
@@ -62,8 +65,9 @@ App
  │    │    │    ├── SpecialityFilter
  │    │    │    └── ConsultationModeFilter
  │    │    └── ClearFiltersButton (sticky at top of filters)
- │    └── DoctorList
- │         └── DoctorCard (animated, modern layout)
+ │    └── DoctorList (infinite scroll, skeleton loader)
+ │         ├── DoctorCard (animated, modern layout)
+ │         └── SkeletonDoctorCard (loading fallback)
 ```
 
 ---
@@ -78,6 +82,8 @@ App
 - Inspect elements for correct `data-testid` attributes
 - **Sidebar remains fixed and accessible while scrolling**
 - **Doctor cards animate in/out on filter/search/sort changes**
+- **Infinite scroll loads more doctor cards as you scroll**
+- **Skeleton loader appears while loading more cards**
 
 ---
 
@@ -92,6 +98,7 @@ App
 - Minimal, modern, and maintainable code structure
 - **Consistent, theme-based styling and spacing**
 - **Motion effects for a modern, dynamic UI**
+- **Performance optimizations: lazy loading, infinite scroll, skeleton loader**
 
 ---
 
@@ -108,10 +115,11 @@ App
 - [x] All required data-testid attributes
 - [x] Accessibility best practices
 - [x] Loading and error handling
-- [x] **Modern red/white theme and gradients**
+- [x] **Premium gold/white/gray theme and modern fonts**
 - [x] **Animated doctor cards and UI (motion)**
 - [x] **Sticky/fixed sidebar and scrollable filters**
 - [x] **Profile photo, clinic, and all available doctor info**
+- [x] **Infinite scroll and skeleton loader for doctor cards**
 
 ---
 

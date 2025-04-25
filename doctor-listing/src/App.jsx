@@ -55,7 +55,10 @@ function App() {
       if (loading || lazyLoading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new window.IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && visibleCount < filteredDoctors.length) {
+        if (
+          entries[0].isIntersecting &&
+          visibleCount < filteredDoctors.length
+        ) {
           setLazyLoading(true);
           setTimeout(() => {
             setVisibleCount((prev) => prev + PAGE_SIZE);
