@@ -1,4 +1,4 @@
-# Doctor Listing Page – Campus Assessment
+# Vynza – Doctor Listing Page – Campus Assessment
 
 ## Overview
 A modern, minimal, and fully functional doctor listing page built with React and Vite. Features include:
